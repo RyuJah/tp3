@@ -23,7 +23,6 @@
 
   export default {
     name: 'Slicer',
-    // props: ['samples', 'parts'],
     computed:{
       samples() {
         return this.$store.getters["samples/samples"];
@@ -48,11 +47,9 @@
             this.$store.commit("parts/addPart",{code : s.code.substring(i,i+this.cutFactor)})
           }
         });
-        // remove chosen viruses
         for(let i=this.chosenViruses.length-1;i>=0;i--) {
           this.$store.commit("samples/removeSample",this.chosenViruses[i])
         }
-        // unselect all
         this.chosenViruses.splice(0,this.chosenViruses.length)
       },
       mutation : function() {

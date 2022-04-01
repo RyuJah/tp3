@@ -36,7 +36,6 @@
       viruses(){
         return this.$store.getters["viruses/viruses"]
       }
-
     },
     data : () => {
       return {
@@ -51,21 +50,18 @@
       mix : function() {
         let newCode="";
 
-        let chosen = [...this.chosenParts]; // real copy so that we can splice on the copy
+        let chosen = [...this.chosenParts];
         let nb = chosen.length;
         for(let i=0;i<nb;i++) {
-          // choose randomly a part among the selected ones
           let idx = Math.floor(Math.random() * chosen.length);
           let p = this.parts[chosen[idx]];
           newCode = newCode+p.code;
           chosen.splice(idx,1);
         }
         this.newVirus = new Virus(this.viruses.length,'mixedvirus',newCode);
-        // remove chosen parts
         for(let i=this.chosenParts.length-1;i>=0;i--) {
           this.$store.commit("parts/removePart",this.chosenParts[i])
         }
-        // unselect all
         this.chosenParts.splice(0,this.chosenParts.length)
       },
       sendToLibrary : function() {
