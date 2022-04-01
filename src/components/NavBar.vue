@@ -20,7 +20,7 @@
 
 <!--**********************-->
 
-    <v-card class="overflow-hidden">
+<!--    <v-card class="overflow-hidden">
       <v-app-bar
           absolute
           color="#6A76AB"
@@ -73,7 +73,7 @@
       </v-sheet>
     </v-card>
   </div>
-</template>
+</template>-->
 
 <script>
   export default {
