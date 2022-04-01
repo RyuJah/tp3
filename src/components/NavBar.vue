@@ -1,6 +1,7 @@
+
 <template>
   <div>
-    <button v-for="(t,index) in titles" :key="index" :style="{color : t.color}" @click="$router.push({path:t.path})">{{t.text}}</button>
+<!--    <button v-for="(t,index) in titles" :key="index" :style="{color : t.color}" @click="$router.push({path:t.path})">{{t.text}}</button>-->
 
 <!--**************************************-->
 <!--    <v-container>
@@ -19,15 +20,25 @@
     </v-container>-->
 
 <!--**********************-->
-
-<!--    <v-card class="overflow-hidden">
+<!--    <v-bottom-navigation
+        color="primary"
+        horizontal
+        grow
+    >
+      <v-btn v-for="(t,index) in titles" :key="index" :style="{color : t.color}" @click="$router.push({path:t.path})" >
+        <span>{{ t.text }}</span>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+    </v-bottom-navigation>-->
+<!--****************-->
+    <v-card class="overflow-hidden">
       <v-app-bar
           absolute
           color="#6A76AB"
           dark
           shrink-on-scroll
           prominent
-          src="https://picsum.photos/1920/1080?random"
+          src="https://picsum.photos/200/300"
           fade-img-on-scroll
           scroll-target="#scrolling-techniques-3"
       >
@@ -57,10 +68,8 @@
         </v-btn>
 
         <template v-slot:extension>
-          <v-tabs align-with-title>
-            <v-tab>Tab 1</v-tab>
-            <v-tab>Tab 2</v-tab>
-            <v-tab>Tab 3</v-tab>
+          <v-tabs align-with-title >
+            <v-tab v-for="(t,index) in titles" :key="index" :style="{color : t.color}" @click="$router.push({path:t.path})">{{ t.titles }}</v-tab>
           </v-tabs>
         </template>
       </v-app-bar>
@@ -69,16 +78,19 @@
           class="overflow-y-auto"
           max-height="600"
       >
-        <v-container style="height: 1000px;"></v-container>
+        <v-container style="height: 220px;"></v-container>
       </v-sheet>
-    </v-card>-->
+    </v-card>
+
+
   </div>
 </template>
 
 <script>
   export default {
     name: 'NavBar',
-    props: ['titles']
+    props: ['titles'],
+
   }
 </script>
 
