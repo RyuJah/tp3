@@ -1,13 +1,31 @@
 <template>
   <div>
+    <hr><br><br>
     <h2>In my basket :</h2>
-    <table >
+<!--    <table >
       <tr><td>Name</td><td>Code</td><td>% Mortality</td></tr>
       <tr v-for="(v,index) in basket" :key="index">
         <td>{{v.name}}</td><td>{{v.code}}</td><td>{{v.mortalite}}</td>
       </tr>
-    </table>
-    <button @click="sendToLab">Send to the lab</button>
+    </table>-->
+    <v-container>
+      <v-data-table
+          :headers="data"
+          :items="basket"
+          hide-default-header
+          hide-default-footer
+          class="elevation-1"
+      >
+      </v-data-table><hr><br>
+      Moyenne des mortalités : {{average}}
+      <br><br>
+      <v-btn @click="sendToLab"
+             class="ma-4 pa-4"
+             large
+             rounded
+      >Send to the lab
+      </v-btn>
+    </v-container>
   </div>
 </template>
 
