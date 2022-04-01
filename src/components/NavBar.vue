@@ -2,20 +2,21 @@
 <template>
   <div>
     <v-card class="overflow-hidden">
+
       <v-app-bar
           absolute
           color="#6A76AB"
           dark
           shrink-on-scroll
           prominent
-          src="https://picsum.photos/200/300"
+          src="../assets/biblio.jpg"
           fade-img-on-scroll
           scroll-target="#scrolling-techniques-3"
       >
         <template v-slot:img="{ props }">
           <v-img
               v-bind="props"
-              gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
+              gradient="to top right, rgba(125,125,125,.7), rgba(0,0,0,.7)"
           ></v-img>
         </template>
 
@@ -66,11 +67,11 @@
 </template>
 
 <script>
-  export default {
-    name: 'NavBar',
-    props: ['titles'],
+export default {
+  name: 'NavBar',
+  props: ['titles']
 
-  }
+}
 </script>
 
 <style scoped>
