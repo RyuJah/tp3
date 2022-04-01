@@ -23,8 +23,8 @@
       samples(){
         return this.$store.getters["samples/samples"];
       },
-      viruses(){
-        return this.$store.getters["viruses/viruses"];
+      data(){
+        return this.$store.getters["viruses/data"];
       },
       average(){
         return this.$store.getters["basket/averageMortalityBasket"]
