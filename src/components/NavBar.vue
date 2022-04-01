@@ -71,9 +71,9 @@
       >
         <v-container style="height: 1000px;"></v-container>
       </v-sheet>
-    </v-card>
+    </v-card>-->
   </div>
-</template>-->
+</template>
 
 <script>
   export default {
