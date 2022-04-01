@@ -1,20 +1,31 @@
 <template>
   <div>
-    <h1>Labo</h1>
-    <table border="0">
+    <v-container>
+      <h2 style="text-align: left;">Viruses</h2>
+      <CheckedList :fields="['name','code']" :entries="samples" @chosen-changed="chosenViruses = $event" />
+      <br>
       <tr>
-        <td><h1>Viruses</h1></td>
+        <td><v-text-field
+            label="Part Length:"
+            id="cute"
+            v-model.number="cutFactor"
+            outlined
+            rounded
+        ></v-text-field></td>
+        <td><v-text-field
+            label="Nb mutations"
+            v-model.number="nbMutation"
+            outlined
+            rounded
+        ></v-text-field></td>
       </tr>
       <tr>
-        <td>
-          <CheckedList :fields="['name','code']" :entries="samples" @chosen-changed="chosenViruses = $event" />
-        </td>
+        <td><v-btn @click="cut()" :disabled="chosenViruses.length===0" rounded outlined>Cut</v-btn></td>
+        <td><v-btn @click="mutation()" :disabled="chosenViruses.length===0" rounded outlined>Mutation</v-btn></td>
       </tr>
-    </table>
-    <label for="cut">part length: </label><input id="cut" v-model.number="cutFactor"><button :disabled="chosenViruses.length==0" @click="cut()">Cut</button>
-    <label for="mute">nb mutations: </label><input id="mute" v-model.number="nbMutation"><button :disabled="chosenViruses.length==0" @click="mutation()">Mutation</button>
-    <hr/>
-    <button @click="$router.push({path:'/labo/mix'})">Go to mixer</button>
+      <br><br>
+      <v-btn @click="$router.push({path:'/labo/mix'})" shaped large block>Go to mixer</v-btn>
+    </v-container>
   </div>
 </template>
 

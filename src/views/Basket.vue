@@ -10,11 +10,12 @@
           hide-default-footer
           class="elevation-1"
       >
-        <template>
-              <v-btn class="mx-2" fab dark small color="pink" @click="deleteBasket">
-                <v-icon dark>mdi-heart</v-icon>
-              </v-btn>
+        <template v-slot:item.mortalite="{ item }">
+          <v-chip :style="{background : getColor(item.mortalite)}" dark>
+            {{ item.mortalite }}
+          </v-chip>
         </template>
+
       </v-data-table><hr><br>
       Moyenne des mortalités : {{average}}
       <br><br>
@@ -67,9 +68,12 @@
         this.$store.commit('basket/clearBasket')
       },
 
-      deleteBasket : function (){
-        this.$store.commit("basket/removeVirusFromBasket")
+      getColor (mortalite) {
+        if (mortalite > 10) return 'red'
+        else if (mortalite> 5) return 'orange'
+        else return 'green'
       }
+
     },
   }
 </script>
