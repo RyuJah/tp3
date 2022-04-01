@@ -2,12 +2,6 @@
   <div>
     <hr><br><br>
     <h2>In my basket :</h2>
-<!--    <table >
-      <tr><td>Name</td><td>Code</td><td>% Mortality</td></tr>
-      <tr v-for="(v,index) in basket" :key="index">
-        <td>{{v.name}}</td><td>{{v.code}}</td><td>{{v.mortalite}}</td>
-      </tr>
-    </table>-->
     <v-container>
       <v-data-table
           :headers="data"
@@ -16,20 +10,26 @@
           hide-default-footer
           class="elevation-1"
       >
-
-
+        <template>
+              <v-btn class="mx-2" fab dark small color="pink" @click="deleteBasket">
+                <v-icon dark>mdi-heart</v-icon>
+              </v-btn>
+        </template>
       </v-data-table><hr><br>
+      Moyenne des mortalités : {{average}}
       <br><br>
       <v-btn @click="sendToLab"
              class="ma-4 pa-4"
              large
              rounded
+             outlined
       >Send to the lab
       </v-btn>
       <v-btn @click="clearBasket"
               class="ma-4 pa-4"
               large
               rounded
+             outlined
       >Vider la sélection
       </v-btn>
     </v-container>
@@ -66,6 +66,10 @@
       clearBasket: function() {
         this.$store.commit('basket/clearBasket')
       },
+
+      deleteBasket : function (){
+        this.$store.commit("basket/removeVirusFromBasket")
+      }
     },
   }
 </script>
