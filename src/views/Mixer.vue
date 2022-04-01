@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <h1 style="text-align: left;">Parts :</h1>
+      <h2 style="text-align: left;">Parts :</h2>
       <CheckedList :fields="['code']" :entries="parts" @chosen-changed="chosenParts = $event"></CheckedList>
     </v-container>
 

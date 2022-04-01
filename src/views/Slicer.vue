@@ -20,11 +20,12 @@
         ></v-text-field></td>
       </tr>
       <tr>
-        <td><v-btn @click="cut()" :disabled="chosenViruses.length===0" rounded outlined>Cut</v-btn></td>
-        <td><v-btn @click="mutation()" :disabled="chosenViruses.length===0" rounded outlined>Mutation</v-btn></td>
+        <td><v-btn @click="cut()" :disabled="chosenViruses.length===0" class="ma-4 pa-4" large rounded block>Cut</v-btn></td>
+        <td><v-btn @click="mutation()" :disabled="chosenViruses.length===0" class="ma-4 pa-4" large rounded block>Mutation</v-btn></td>
       </tr>
-      <br><br>
-      <v-btn @click="$router.push({path:'/labo/mix'})" shaped large block>Go to mixer</v-btn>
+      <br><hr><br>
+
+      <v-btn @click="$router.push({path:'/labo/mix'})" rounded outlined block>Go to mixer</v-btn>
     </v-container>
   </div>
 </template>

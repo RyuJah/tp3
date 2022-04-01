@@ -1,6 +1,9 @@
 <template>
   <div>
+    <hr>
     <h1>Library</h1>
+    <br>
+    <hr>
       <Articles></Articles>
       <router-view name="locDown" ></router-view>
   </div>
