@@ -16,14 +16,21 @@
           hide-default-footer
           class="elevation-1"
       >
+
+
       </v-data-table><hr><br>
-      Moyenne des mortalités : {{average}}
       <br><br>
       <v-btn @click="sendToLab"
              class="ma-4 pa-4"
              large
              rounded
       >Send to the lab
+      </v-btn>
+      <v-btn @click="clearBasket"
+              class="ma-4 pa-4"
+              large
+              rounded
+      >Vider la sélection
       </v-btn>
     </v-container>
   </div>
@@ -55,7 +62,10 @@
           this.$store.commit('samples/addSample',v)
         })
         this.$store.commit("basket/clearBasket")
-      }
+      },
+      clearBasket: function() {
+        this.$store.commit('basket/clearBasket')
+      },
     },
   }
 </script>
