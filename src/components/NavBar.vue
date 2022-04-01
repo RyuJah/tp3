@@ -22,7 +22,7 @@
 
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-        <v-app-bar-title>Le laboratoire du Dr Mad....</v-app-bar-title>
+        <v-app-bar-title>The laboratory of Dr Mad....</v-app-bar-title>
 
         <v-spacer></v-spacer>
 

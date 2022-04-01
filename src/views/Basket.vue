@@ -30,7 +30,7 @@
               large
               rounded
              outlined
-      >Vider la sélection
+      >Clear Basket
       </v-btn>
     </v-container>
   </div>
