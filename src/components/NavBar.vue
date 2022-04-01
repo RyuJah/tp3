@@ -20,7 +20,8 @@
     </v-container>-->
 
 <!--**********************-->
-<!--    <v-bottom-navigation
+    <!--
+    <v-bottom-navigation
         color="primary"
         horizontal
         grow
@@ -29,8 +30,10 @@
         <span>{{ t.text }}</span>
         <v-icon>mdi-heart</v-icon>
       </v-btn>
-    </v-bottom-navigation>-->
+    </v-bottom-navigation>
+    -->
 <!--****************-->
+
     <v-card class="overflow-hidden">
       <v-app-bar
           absolute
@@ -68,9 +71,21 @@
         </v-btn>
 
         <template v-slot:extension>
+          <v-bottom-navigation
+              color="primary"
+              horizontal
+              grow
+          >
+            <v-btn v-for="(t,index) in titles" :key="index" :style="{color : t.color}" @click="$router.push({path:t.path})" >
+              <span>{{ t.text }}</span>
+              <v-icon>mdi-heart</v-icon>
+            </v-btn>
+          </v-bottom-navigation>
+          <!--
           <v-tabs align-with-title >
             <v-tab v-for="(t,index) in titles" :key="index" :style="{color : t.color}" @click="$router.push({path:t.path})">{{ t.titles }}</v-tab>
           </v-tabs>
+          -->
         </template>
       </v-app-bar>
       <v-sheet
