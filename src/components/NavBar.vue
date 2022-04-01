@@ -57,7 +57,7 @@
           class="overflow-y-auto"
           max-height="600"
       >
-        <v-container style="height: 230px;"></v-container>
+        <v-container style="height: 240px;"></v-container>
       </v-sheet>
     </v-card>
 
