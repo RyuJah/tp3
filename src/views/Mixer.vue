@@ -29,7 +29,16 @@
 
   export default {
     name: 'Mixer',
-    props: ['parts'],
+    // props: ['parts'],
+    computed: {
+      parts(){
+        return this.$store.getters["parts/parts"]
+      },
+      viruses(){
+        return this.$store.getters["viruses/viruses"]
+      }
+
+    },
     data : () => {
       return {
         chosenParts:[],
@@ -55,13 +64,15 @@
         this.newVirus = new Virus(viruses.length,'mixedvirus',newCode);
         // remove chosen parts
         for(let i=this.chosenParts.length-1;i>=0;i--) {
-          this.parts.splice(this.chosenParts[i],1);
+          // this.parts.splice(this.chosenParts[i],1);
+          this.$store.commit("parts/removePart",this.chosenParts[i])
         }
         // unselect all
         this.chosenParts.splice(0,this.chosenParts.length)
       },
       sendToLibrary : function() {
-        this.$emit('store-virus',this.newVirus);
+        // this.$emit('store-virus',this.newVirus);
+        this.$store.commit("viruses/addVirus",this.newVirus)
         this.newVirus = null;
       }
     }

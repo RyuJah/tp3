@@ -13,30 +13,40 @@
 
 <script>
 
-  import {Virus} from "../model";
-
   export default {
     name: 'Basket',
     props: ['operation','name','code'],
-    data : () => {
-      return {
-        basket: []
+    computed: {
+      basket() {
+        return this.$store.getters["basket/basket"];
+      },
+      samples(){
+        return this.$store.getters["samples/samples"];
+      },
+      viruses(){
+        return this.$store.getters["viruses/viruses"];
+      },
+      average(){
+        return this.$store.getters["basket/averageMortalityBasket"]
       }
     },
     methods: {
       sendToLab : function() {
-        this.$emit('send-lab',this.basket);
-        this.basket.splice(0,this.basket.length)
+        let basket = this.basket
+        basket.forEach(v =>{
+          this.$store.commit('samples/addSample',v)
+        })
+        this.$store.commit("basket/clearBasket")
       }
     },
-    watch: {
-      operation(to, from) {
-        if (to == 'addbasket') {
-          this.basket.push(new Virus(0,this.name, this.code))
-          this.$router.push({path:'/library/view'})
-        }
-      }
-    }
+    // watch: {
+    //   operation(to, from) {
+    //     if (to == 'addbasket') {
+    //       this.basket.push(new Virus(0,this.name, this.code))
+    //       this.$router.push({path:'/library/view'})
+    //     }
+    //   }
+    // }
   }
 </script>
 
