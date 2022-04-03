@@ -1,4 +1,16 @@
 import {viruses} from "@/model";
+import axios from 'axios';
+
+var urlApi="http://localhost:8000" //addresse de l'api
+
+axios.get( urlApi+"/viruses")
+    .then(res=>{
+        viruses=res.data;
+    })
+    .catch(err=>{
+        console.log("Erreur fetch virus : "+err);
+    })
+
 export default {
     namespaced : true,
     state: ()=>({
@@ -12,14 +24,13 @@ export default {
     }),
 
     mutations: {
-        clearViruses(state){
-            state.viruses.splice(0,state.viruses.length);
-        },
         addVirus(state, virus){
             state.viruses.push(virus);
+            axios.post(urlApi+"/viruses",virus).catch(err=>{console.log("Erreur ajout virus : "+err)})
         },
         removeVirus(state, virus){
             state.viruses.splice(virus,1);
+            axios.delete(urlApi+"/viruses",virus).catch(err=>{console.log("Erreur remove virus : "+err)})
         }
     },
     getters: {
